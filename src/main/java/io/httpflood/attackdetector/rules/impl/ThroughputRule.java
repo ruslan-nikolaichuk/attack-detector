@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class ThroughputRule implements DetectorRule {
 
     @Value("${attackDetector.rules.throughput.threshold:1000}")
-    private Integer threshold;
+    protected Integer threshold;
     private Map<String, Integer> requestsPerIp = new HashMap<>();
 
     @Override
@@ -39,6 +39,6 @@ public class ThroughputRule implements DetectorRule {
     }
 
     private Boolean thresholdPredicate(Entry<String, Integer> e) {
-        return e.getValue() > threshold;
+        return e.getValue() >= threshold;
     }
 }
