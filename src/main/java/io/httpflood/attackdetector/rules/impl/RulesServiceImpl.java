@@ -11,9 +11,11 @@ import java.util.stream.Collectors;
 @Service
 public class RulesServiceImpl implements RulesService {
     @Autowired
-    Set<DetectorRule> rules;
+    protected Set<DetectorRule> rules;
     @Override
     public Set<String> getIpBlacklist() {
         return rules.stream().map(DetectorRule::getIpBlacklist).flatMap(Set::stream).collect(Collectors.toSet());
     }
+
+
 }

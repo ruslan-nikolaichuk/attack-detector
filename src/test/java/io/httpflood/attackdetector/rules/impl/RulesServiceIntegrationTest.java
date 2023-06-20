@@ -13,12 +13,12 @@ import java.util.Set;
 public class RulesServiceIntegrationTest {
 
     @Autowired
-    RulesService rulesService;
+    RulesServiceImpl rulesService;
 
     @Autowired
     ThroughputRule throughputRule;
     @Test
-    void testBlacklistWithThreashold() {
+    void testBlacklistWithThreshold() {
 
 
         throughputRule.threshold = 3;
@@ -35,5 +35,10 @@ public class RulesServiceIntegrationTest {
         Assert.isTrue(blacklist.size()==1, "Blacklist has to contain only one element");
         Assert.isTrue(blacklist.contains("127.0.0.3"), "127.0.0.3 is expected to be blocked");
 
+    }
+
+    @Test
+    void testRuleInjection(){
+        Assert.isTrue(rulesService.rules.size()==1,"Rule service has contain 0ne rule");
     }
 }
