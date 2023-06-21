@@ -9,9 +9,15 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class RulesServiceImpl implements RulesService {
+public class RulesServiceImpl implements DetectorRule {
     @Autowired
     protected Set<DetectorRule> rules;
+
+    @Override
+    public void consumeIp(String ip, String url) {
+        rules.stream().forEach(rule -> rule.consumeIp(ip, url));
+    }
+
     @Override
     public Set<String> getIpBlacklist() {
         return rules.stream().map(DetectorRule::getIpBlacklist).flatMap(Set::stream).collect(Collectors.toSet());

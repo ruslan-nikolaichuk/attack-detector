@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class ThroughputRule implements DetectorRule {
+public class ThroughputRuleImpl implements DetectorRule {
 
     @Value("${attackDetector.rules.throughput.threshold:1000}")
     protected Integer threshold;

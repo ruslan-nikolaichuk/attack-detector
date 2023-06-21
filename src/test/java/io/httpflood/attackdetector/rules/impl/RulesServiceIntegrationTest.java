@@ -1,10 +1,8 @@
 package io.httpflood.attackdetector.rules.impl;
 
-import io.httpflood.attackdetector.rules.RulesService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Set;
@@ -16,7 +14,7 @@ public class RulesServiceIntegrationTest {
     RulesServiceImpl rulesService;
 
     @Autowired
-    ThroughputRule throughputRule;
+    ThroughputRuleImpl throughputRule;
     @Test
     void testBlacklistWithThreshold() {
 
